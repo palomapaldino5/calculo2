@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: linear-gradient(#6e6e6e, #d2d2d2);
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: aqua;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Testes De Interação</h1>
+    </header>
+
+    <section class="entrar">
+        <p>Você deseja acessar o site?</p>
+        <button id="entrar">Entrar</button>
+    </section>
+
+    <section>
+        <h2>Inserir Nome do Usuário</h2>
+        <input id="userName" type="text" placeholder="Digite seu nome">
+        <button id="submitName">Enviar</button>
+        <p id="greeting"></p>
+    </section>
+
+    <section>
+        <h2>Data Atual</h2>
+        <p id="dataAtual"></p>
+    </section>
+
+    <section>
+        <h2>Calcular Média</h2>
+        <form id="mediaForm">
+            <label>Insira as médias (separados por vírgula):</label>
+            <input id="mediaInput" type="text" placeholder="Ex: 8, 9, 10">
+            <button type="submit">Resultado</button>
+        </form>
+        <p id="NumPar">Este número é:</p>
+    </section>
+
+    <section>
+        <h2>Calcular Valores</h2>
+        <label>Para Adição</label>
+        <input id="adicao" type="number">
+        <label>Para Subtração</label>
+        <input id="sub" type="number">
+        <label>Para Porcentagem</label>
+        <input id="porcentagem" type="number">
+        <button id="calculardbl">Duplo Clique para Calcular</button>
+        <p id="ResultadoCalc"></p>
+    </section>
+
+    <section id="tableArray">
+        <h2>Tabela de Itens</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Linhas da tabela aparecerão aqui -->
+            </tbody>
+        </table>
+        <button id="exibirTabela">Exibir Tabela</button>
+    </section>
+
+    <div id="allDeleteBody">
+        <button id="deleteBody">Adeus conteúdo!</button>
+    </div>
+
+    <footer>
+        <p id="footerData"></p>
+    </footer> 
+
+    <script>
+        // Função de alerta ao entrar no site
+        document.getElementById('entrar').addEventListener('click', function() {
+            alert("Acessando o site");
+        });
+
+        // Inserir nome do usuário
+        document.getElementById('submitName').addEventListener('click', function() {
+            const name = document.getElementById('userName').value;
+            document.getElementById('greeting').innerText = `Bem-vindo(a), ${name}!`;
+        });
+
+        // Mostrar data atual
+        const today = new Date();
+        document.getElementById('dataAtual').innerText = today.toLocaleDateString();
+        document.getElementById('footerData').innerText = `Data Atual: ${today.toLocaleString()}`; 
+
+        // Calcular média
+        document.getElementById('mediaForm').addEventListener('sumit', function(event){
+            event.preventDefault();
+            const inputs = document.getElementById('mediaInput').value.split(',').map(Number);
+
+            const media = inputs.reduce((a,b)=> a + b, 0)/ inputs.length;
+
+            const parOuImpar = media % 2 === 0 ? 'par' : 'impar';
+            document.getElementById('NumPar').innerText = `A média é:${media.toFixed(2)} e é ${parOuImpar}.`;
+        });
+
+        //Calculadora
+        document.getElementById('calculardbl').addEventListener('dblclick', function(){
+            const adicao = Number(document.getElementById('adição').value);
+            const sub = Number(document.getElementById('sub').value);
+            const porcentagem = Number(document.getElementById('porcentagem').value);
+            const resultado = {
+                adicao: adicao + sub,
+                subtracao: adicao - sub,
+                porcentagem: (adicao * porcentagem)/100
+            };
+            document.getElementById('ResultadoCalc').innerText = `Soma:${resultado.adicao},
+            Subtração: ${resultado.subtracao}, Porcentagem: ${resultado.porcentagem}`;
+        });
+
+        //Exibir tabela
+        const itens = ['Item 1, Item 2, Item 3']; // Exemplo de array
+        document.getElementById('exibirTabela').addEventListener('click', function(){
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = ''; // tabela limpa
+            itens.forEach(item => {
+                const row  = document.createElement('tr');
+                row.innerHTML = `<td>${item}</td>`;
+                tbody.appendChild(row);
+            });
+        });
+
+        //deletar todo o body
+        document.getElementById('deletebody').addEventListener('click', function(){
+            document.body.innerHTML='';
+        });
+        </script>
+        </body><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular</title>
+</head>
+<body>
+    boody {
+        backgroud: linear-gradient (#6e6e6e, #d2d2d2);
+        font-famil: Array, sans-serif;
+    }
+    header
+    
+</body>
+</html>
